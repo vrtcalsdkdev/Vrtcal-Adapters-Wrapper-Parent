@@ -16,8 +16,12 @@ public protocol AdapterWrapperProtocol {
         delegate: AdapterWrapperDelegate
     )
     
+    var sdk: SDK { get }
+    
+    func initializeSdk()
     func handle(vrtcalAsSecondaryConfig: VrtcalAsSecondaryConfig)
     func showInterstitial() -> Bool
+    func destroyInterstitial()
 }
 
 public protocol AdapterWrapperDelegate {

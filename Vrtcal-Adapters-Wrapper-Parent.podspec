@@ -16,4 +16,8 @@ Pod::Spec.new do |s|
     s.ios.deployment_target  = '11.0'
 
     s.static_framework = true
+    s.pod_target_xcconfig = {
+        "VALID_ARCHS[sdk=iphoneos*]" => "arm64 armv7",
+        "VALID_ARCHS[sdk=iphonesimulator*]" => "x86_64 arm64"
+    }
 end

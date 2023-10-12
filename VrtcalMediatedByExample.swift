@@ -41,7 +41,7 @@ public enum VrtcalMediatedByExample : String, CaseIterable {
             case .appLovinBannerBasic:
                 return VrtcalAsSecondaryConfig(
                     name: self.rawValue,
-                    thirdParty: .appLovin,
+                    primarySdk: .appLovin,
                     placementType: .banner,
                     adUnitId: "0bbf2c625c63e29f"
                 )
@@ -60,7 +60,7 @@ public enum VrtcalMediatedByExample : String, CaseIterable {
             case .appLovinDebugView:
                 return VrtcalAsSecondaryConfig(
                     name: self.rawValue,
-                    thirdParty: .appLovin,
+                    primarySdk: .appLovin,
                     placementType: .showDebugView,
                     adUnitId: ""
                 )
@@ -68,7 +68,7 @@ public enum VrtcalMediatedByExample : String, CaseIterable {
             case .appLovinInterstitialBasic:
                 return VrtcalAsSecondaryConfig(
                     name: self.rawValue,
-                    thirdParty: .appLovin,
+                    primarySdk: .appLovin,
                     placementType: .interstitial,
                     adUnitId: "47f3a9b0433d25a4"
                 )
@@ -86,7 +86,7 @@ public enum VrtcalMediatedByExample : String, CaseIterable {
             case .googleMobileAdsBanner:
                 return VrtcalAsSecondaryConfig(
                     name: self.rawValue,
-                    thirdParty: .googleMobileAds,
+                    primarySdk: .googleMobileAds,
                     placementType: .banner,
                     adUnitId: "ca-app-pub-9576567786990145/7712119624"
                 )
@@ -94,7 +94,7 @@ public enum VrtcalMediatedByExample : String, CaseIterable {
             case .googleMobileAdsInterstitial:
                 return VrtcalAsSecondaryConfig(
                     name: self.rawValue,
-                    thirdParty: .googleMobileAds,
+                    primarySdk: .googleMobileAds,
                     placementType: .interstitial,
                     adUnitId: "ca-app-pub-9576567786990145/2025798230"
                 )
@@ -104,7 +104,7 @@ public enum VrtcalMediatedByExample : String, CaseIterable {
             case .ironSourceInterstitial:
                 return VrtcalAsSecondaryConfig(
                     name: self.rawValue,
-                    thirdParty: .ironSource,
+                    primarySdk: .ironSource,
                     placementType: .interstitial,
                     adUnitId: "556d9907930e44b492158fef75f8724b"
                 )
@@ -120,7 +120,7 @@ public enum VrtcalMediatedByExample : String, CaseIterable {
             case .ironSourceRewardedVideo:
                 return VrtcalAsSecondaryConfig(
                     name: self.rawValue,
-                    thirdParty: .ironSource,
+                    primarySdk: .ironSource,
                     placementType: .rewardedVideo,
                     adUnitId: ""
                 )
@@ -131,7 +131,7 @@ public enum VrtcalMediatedByExample : String, CaseIterable {
             case .smaatoBanner:
                 return VrtcalAsSecondaryConfig(
                     name: self.rawValue,
-                    thirdParty: .smaato,
+                    primarySdk: .smaato,
                     placementType: .banner,
                     adUnitId: "130626424"
                 )
@@ -139,7 +139,7 @@ public enum VrtcalMediatedByExample : String, CaseIterable {
             case .smaatoInterstitial:
                 return VrtcalAsSecondaryConfig(
                     name: self.rawValue,
-                    thirdParty: .smaato,
+                    primarySdk: .smaato,
                     placementType: .interstitial,
                     adUnitId: "130626426"
                 )
@@ -147,7 +147,7 @@ public enum VrtcalMediatedByExample : String, CaseIterable {
             case .tapjoyInterstitial:
                 return VrtcalAsSecondaryConfig(
                     name: self.rawValue,
-                    thirdParty: .tapjoy,
+                    primarySdk: .tapjoy,
                     placementType: .interstitial,
                     adUnitId: "QA CORE Interstitial iOS Local"
                 )
