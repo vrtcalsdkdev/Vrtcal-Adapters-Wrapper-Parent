@@ -19,7 +19,7 @@ public protocol AdapterWrapperProtocol {
     var sdk: SDK { get }
     
     func initializeSdk()
-    func handle(vrtcalAsSecondaryConfig: VrtcalAsSecondaryConfig)
+    func handle(adTechConfig: AdTechConfig)
     func showInterstitial() -> Bool
     func destroyInterstitial()
 }

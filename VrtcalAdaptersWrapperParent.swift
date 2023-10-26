@@ -64,15 +64,15 @@ public class VrtcalAdaptersWrapperParent {
         adapterWrapper.initializeSdk()
     }
     
-    public func mediate(vrtcalAsSecondaryConfig: VrtcalAsSecondaryConfig) {
+    public func mediate(adTechConfig: AdTechConfig) {
         guard let adapterWrapper = adapterWrappers.first(where: {
-            $0.sdk == vrtcalAsSecondaryConfig.primarySdk
+            $0.sdk == adTechConfig.primarySdk
         }) else {
-            sdkEventsLogger.log("SDK not found, can't mediate: \(vrtcalAsSecondaryConfig.primarySdk)")
+            sdkEventsLogger.log("SDK not found, can't mediate: \(adTechConfig.primarySdk)")
             return
         }
         
-        adapterWrapper.handle(vrtcalAsSecondaryConfig: vrtcalAsSecondaryConfig)
+        adapterWrapper.handle(adTechConfig: adTechConfig)
     }
     
     public func showInterstitial() -> Bool {
