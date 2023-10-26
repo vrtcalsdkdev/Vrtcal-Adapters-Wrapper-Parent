@@ -17,7 +17,7 @@ public enum AdTechConfigProvider: CaseIterable {
     
     // Third Party Adapter Doc:
     // https://docs.google.com/spreadsheets/d/1jy4-TS7HwSypUWtgEyV0SS3-Rt2Jv4UvKNR8upH-GHA/edit
-    public var adtechConfig: AdTechConfig {
+    public var adTechConfig: AdTechConfig {
         switch self {
                 
             // MARK: AppLovin
