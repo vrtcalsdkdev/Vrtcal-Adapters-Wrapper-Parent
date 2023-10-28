@@ -28,5 +28,5 @@ public protocol AdapterWrapperDelegate {
     var viewController: UIViewController { get }
     var isSimulator: Bool { get }
 
-    func provide(banner: UIView)
+    func adapterWrapperDidProvide(banner: UIView)
 }

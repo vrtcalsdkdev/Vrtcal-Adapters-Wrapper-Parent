@@ -12,8 +12,9 @@ public class VrtcalAdaptersWrapperParent {
     var appLogger: Logger
     var sdkEventsLogger: Logger
     
+    var initializeAllSdksOnceHasRun = false
     
-    /// List of adapters included via cocoapods
+    /// List of adapters included via cocoapods and fetched using ProtocolImplementationFinder
     public let adapterWrappers: [AdapterWrapperProtocol]
 
     // TODO: Make Vrtcal be its own Adapter Wrapper
@@ -21,8 +22,8 @@ public class VrtcalAdaptersWrapperParent {
     public lazy var sdks: [SDK] = {
         var sdks = adapterWrappers.map {
             $0.sdk
-        }.sorted {
-            $0.rawValue < $1.rawValue
+        }.sorted { (lhs: SDK, rhs: SDK) in
+            lhs.description < rhs.description
         }
         
         sdks.insert(.vrtcal, at: 0)
@@ -64,6 +65,16 @@ public class VrtcalAdaptersWrapperParent {
         adapterWrapper.initializeSdk()
     }
     
+    public func initializeAllSdksOnce() {
+        guard !initializeAllSdksOnceHasRun else {
+            return
+        }
+        initializeAllSdksOnceHasRun = true
+        sdks.forEach {
+            initialize(sdk: $0)
+        }
+    }
+    
     public func mediate(adTechConfig: AdTechConfig) {
         guard let adapterWrapper = adapterWrappers.first(where: {
             $0.sdk == adTechConfig.primarySdk
@@ -75,6 +86,7 @@ public class VrtcalAdaptersWrapperParent {
         adapterWrapper.handle(adTechConfig: adTechConfig)
     }
     
+    @discardableResult
     public func showInterstitial() -> Bool {
         for adapterWrapper in adapterWrappers {
             if adapterWrapper.showInterstitial() {
