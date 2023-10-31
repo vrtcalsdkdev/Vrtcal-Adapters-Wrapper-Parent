@@ -30,7 +30,7 @@ public enum AdTechConfigProvider: CaseIterable, CustomStringConvertible {
     case ironSourceToVrtcalInterstitial
     case ironSourceToVrtcalRewardedVideo
     
-    case smaatofimerSoloBanner
+    case smaatoSoloBanner
     case smaatoSoloInterstitial
     
     case tapjoySoloInterstitial
