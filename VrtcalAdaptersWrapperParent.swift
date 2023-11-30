@@ -89,7 +89,9 @@ public class VrtcalAdaptersWrapperParent {
     @discardableResult
     public func showInterstitial() -> Bool {
         for adapterWrapper in adapterWrappers {
+            sdkEventsLogger.log("Checking \(adapterWrapper.sdk) for interstitial...")
             if adapterWrapper.showInterstitial() {
+                sdkEventsLogger.log("\(adapterWrapper.sdk) showed an interstitial")
                 return true
             }
         }
