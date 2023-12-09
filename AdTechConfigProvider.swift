@@ -1,4 +1,4 @@
-public enum AdTechConfigProvider: CaseIterable, CustomStringConvertible {
+public enum AdTechConfigProvider: CaseIterable {
     
     case vrtcalSoloBanner
     case vrtcalSoloInterstitial
@@ -34,9 +34,15 @@ public enum AdTechConfigProvider: CaseIterable, CustomStringConvertible {
     case smaatoSoloInterstitial
     
     case tapjoySoloInterstitial
-    
-    public var description: String {
-        return adTechConfig.name
+
+    static public var allCasesVrtcalAsSecondary: [AdTechConfig] {
+        allCases
+        .map {
+            $0.adTechConfig
+        }
+        .filter {
+            $0.secondarySdk == .vrtcal
+        }
     }
     
     // Third Party Adapter Doc:
@@ -254,5 +260,12 @@ public enum AdTechConfigProvider: CaseIterable, CustomStringConvertible {
                 adUnitId: "QA CORE Interstitial iOS Local"
             )
         }
+    }
+}
+
+
+extension AdTechConfigProvider: CustomStringConvertible {
+    public var description: String {
+        return adTechConfig.name
     }
 }
