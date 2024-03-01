@@ -23,8 +23,10 @@ public enum AdTechConfigProvider: CaseIterable {
     case adMobToVrtcalBanner
     case adMobToVrtcalInterstitial
     
-    case appLovinToVrtcalBanner
-    case appLovinToVrtcalInterstitial
+    case appLovinToVrtcalBannerVita
+    case appLovinToVrtcalInterstitialVita
+    case appLovinToVrtcalBannerTwitMore
+    case appLovinToVrtcalInterstitialTwitMore
     case appLovinDebugView
 
     case ironSourceToVrtcalInterstitial
@@ -41,7 +43,7 @@ public enum AdTechConfigProvider: CaseIterable {
             $0.adTechConfig
         }
         .filter {
-            $0.secondarySdk == .vrtcal
+            $0.secondarySdk == .vrtcal || $0.placementType == .showDebugView
         }
     }
     
@@ -189,21 +191,38 @@ public enum AdTechConfigProvider: CaseIterable {
             )
             
         // MARK: AppLovin
-        case .appLovinToVrtcalBanner:
+        case .appLovinToVrtcalBannerVita:
             return AdTechConfig(
                 primarySdk: .appLovin,
                 secondarySdk: .vrtcal,
                 placementType: .banner,
                 adUnitId: "0bbf2c625c63e29f"
             )
+        
+        case .appLovinToVrtcalBannerTwitMore:
+            return AdTechConfig(
+                primarySdk: .appLovin,
+                secondarySdk: .vrtcal,
+                placementType: .banner,
+                adUnitId: "5829eda19b37d9bf"
+            )
             
-        case .appLovinToVrtcalInterstitial:
+        case .appLovinToVrtcalInterstitialVita:
             return AdTechConfig(
                 primarySdk: .appLovin,
                 secondarySdk: .vrtcal,
                 placementType: .interstitial,
                 adUnitId: "47f3a9b0433d25a4"
             )
+            
+        case .appLovinToVrtcalInterstitialTwitMore:
+            return AdTechConfig(
+                primarySdk: .appLovin,
+                secondarySdk: .vrtcal,
+                placementType: .interstitial,
+                adUnitId: "326922ce65d27ad1"
+            )
+
             
         case .appLovinDebugView:
             return AdTechConfig(
