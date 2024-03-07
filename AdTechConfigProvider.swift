@@ -32,9 +32,11 @@ public enum AdTechConfigProvider: CaseIterable {
     case ironSourceToVrtcalInterstitial
     case ironSourceToVrtcalRewardedVideo
     
+    // Smaato does not support mediation with them as primary
     case smaatoSoloBanner
     case smaatoSoloInterstitial
     
+    // TapJoy does not support mediation with them as primary
     case tapjoySoloInterstitial
 
     static public var allCasesVrtcalAsSecondary: [AdTechConfig] {
