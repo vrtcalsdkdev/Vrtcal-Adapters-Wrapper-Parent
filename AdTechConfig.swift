@@ -1,6 +1,7 @@
 import Foundation
 
 public struct AdTechConfig {
+    public let appRestriction: App
     public let primarySdk: SDK
     public let secondarySdk: SDK
     public let placementType: PlacementType
@@ -24,12 +25,14 @@ public struct AdTechConfig {
     }
     
     init(
+        appRestriction: App = .none,
         primarySdk: SDK,
         secondarySdk: SDK,
         placementType: PlacementType,
         adUnitId: String,
         nameSuffix: String? = nil
     ) {
+        self.appRestriction = appRestriction
         self.primarySdk = primarySdk
         self.secondarySdk = secondarySdk
         self.placementType = placementType

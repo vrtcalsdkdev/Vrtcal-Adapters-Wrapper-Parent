@@ -39,13 +39,27 @@ public enum AdTechConfigProvider: CaseIterable {
     // TapJoy does not support mediation with them as primary
     case tapjoySoloInterstitial
 
-    static public var allCasesVrtcalAsSecondary: [AdTechConfig] {
+    static public var allCasesVita: [AdTechConfig] {
+        allCases
+        .map {
+            $0.adTechConfig
+        }
+        // Only show vrtcal as secondary since the test server covers all the vrtcal as primary ones
+        .filter {
+            $0.secondarySdk == .vrtcal || $0.placementType == .showDebugView
+        }
+        .filter {
+            $0.appRestriction == .vita || $0.appRestriction == .none
+        }
+    }
+    
+    static public var allCasesTwitMore: [AdTechConfig] {
         allCases
         .map {
             $0.adTechConfig
         }
         .filter {
-            $0.secondarySdk == .vrtcal || $0.placementType == .showDebugView
+            $0.appRestriction == .twitMore || $0.appRestriction == .none
         }
     }
     
@@ -195,6 +209,7 @@ public enum AdTechConfigProvider: CaseIterable {
         // MARK: AppLovin
         case .appLovinToVrtcalBannerVita:
             return AdTechConfig(
+                appRestriction: .vita,
                 primarySdk: .appLovin,
                 secondarySdk: .vrtcal,
                 placementType: .banner,
@@ -203,6 +218,7 @@ public enum AdTechConfigProvider: CaseIterable {
         
         case .appLovinToVrtcalBannerTwitMore:
             return AdTechConfig(
+                appRestriction: .twitMore,
                 primarySdk: .appLovin,
                 secondarySdk: .vrtcal,
                 placementType: .banner,
@@ -211,6 +227,7 @@ public enum AdTechConfigProvider: CaseIterable {
             
         case .appLovinToVrtcalInterstitialVita:
             return AdTechConfig(
+                appRestriction: .vita,
                 primarySdk: .appLovin,
                 secondarySdk: .vrtcal,
                 placementType: .interstitial,
@@ -219,6 +236,7 @@ public enum AdTechConfigProvider: CaseIterable {
             
         case .appLovinToVrtcalInterstitialTwitMore:
             return AdTechConfig(
+                appRestriction: .twitMore,
                 primarySdk: .appLovin,
                 secondarySdk: .vrtcal,
                 placementType: .interstitial,
