@@ -61,7 +61,7 @@ public class VrtcalAdaptersWrapperParent {
             sdkEventsLogger.log("SDK not found, can't initialize: \(sdk)")
             return
         }
-        sdkEventsLogger.log("Initializing \(sdk)...")
+        sdkEventsLogger.log("Initializing \(sdk) Adapter Wrapper...")
         adapterWrapper.initializeSdk()
     }
     
