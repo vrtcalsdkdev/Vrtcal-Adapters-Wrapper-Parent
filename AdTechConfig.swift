@@ -6,6 +6,7 @@ public struct AdTechConfig {
     public let secondarySdk: SDK
     public let placementType: PlacementType
     public let adUnitId: String
+    public let secondaryAdUnitId: String?
     public let nameSuffix: String?
     
     public var name: String {
@@ -30,6 +31,7 @@ public struct AdTechConfig {
         secondarySdk: SDK,
         placementType: PlacementType,
         adUnitId: String,
+        secondaryAdUnitId: String? = nil,
         nameSuffix: String? = nil
     ) {
         self.appRestriction = appRestriction
@@ -37,6 +39,7 @@ public struct AdTechConfig {
         self.secondarySdk = secondarySdk
         self.placementType = placementType
         self.adUnitId = adUnitId
+        self.secondaryAdUnitId = secondaryAdUnitId
         self.nameSuffix = nameSuffix
     }
 }

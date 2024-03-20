@@ -26,8 +26,6 @@ public class VrtcalAdaptersWrapperParent {
             lhs.description < rhs.description
         }
         
-        sdks.insert(.vrtcal, at: 0)
-        
         return sdks
     }()
     

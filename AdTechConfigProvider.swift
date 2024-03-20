@@ -39,29 +39,39 @@ public enum AdTechConfigProvider: CaseIterable {
     // TapJoy does not support mediation with them as primary
     case tapjoySoloInterstitial
 
-    static public var allCasesVita: [AdTechConfig] {
-        allCases
-        .map {
-            $0.adTechConfig
-        }
-        // Only show vrtcal as secondary since the test server covers all the vrtcal as primary ones
-        .filter {
-            $0.secondarySdk == .vrtcal || $0.placementType == .showDebugView
-        }
-        .filter {
-            $0.appRestriction == .vita || $0.appRestriction == .none
+    static public var allCasesCurrentApp: [AdTechConfig] {
+        
+        switch App.current {
+            
+        case .vita:
+            return allCases
+                .map {
+                    $0.adTechConfig
+                }
+                // Only show vrtcal as secondary since the test server covers all the vrtcal as primary ones
+                .filter {
+                    $0.secondarySdk == .vrtcal || $0.placementType == .showDebugView
+                }
+                .filter {
+                    $0.appRestriction == .vita || $0.appRestriction == .none
+                }
+        case .twitMore:
+            return allCases
+                .map {
+                    $0.adTechConfig
+                }
+                .filter {
+                    $0.appRestriction == .twitMore || $0.appRestriction == .none
+                }
+            
+        case .none:
+            return allCases
+                .map {
+                    $0.adTechConfig
+                }
         }
     }
-    
-    static public var allCasesTwitMore: [AdTechConfig] {
-        allCases
-        .map {
-            $0.adTechConfig
-        }
-        .filter {
-            $0.appRestriction == .twitMore || $0.appRestriction == .none
-        }
-    }
+
     
     // Third Party Adapter Doc:
     // https://docs.google.com/spreadsheets/d/1jy4-TS7HwSypUWtgEyV0SS3-Rt2Jv4UvKNR8upH-GHA/edit
@@ -106,7 +116,8 @@ public enum AdTechConfigProvider: CaseIterable {
                 primarySdk: .vrtcal,
                 secondarySdk: .appLovin,
                 placementType: .banner,
-                adUnitId: "10399"
+                adUnitId: "10399",
+                secondaryAdUnitId: "e57095ed15a96c51"
             )
         
         case .vrtcalToAppLovinInterstitial:
@@ -114,7 +125,8 @@ public enum AdTechConfigProvider: CaseIterable {
                 primarySdk: .vrtcal,
                 secondarySdk: .appLovin,
                 placementType: .interstitial,
-                adUnitId: "10407"
+                adUnitId: "10407",
+                secondaryAdUnitId: "e61b109e4aaca615"
             )
         
         case .vrtcalToFyberFairBidInterstitial:

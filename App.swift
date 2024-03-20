@@ -11,4 +11,17 @@ public enum App: String {
     case none
     case vita
     case twitMore
+    
+    static var current: App {
+        switch Bundle.main.bundleIdentifier {
+            case "com.vrtcal.VrtcalSDKInternalTestApp":
+                return .vita
+                
+            case "com.vrtcal.TwitMore":
+                return .twitMore
+                
+            default:
+                return .none
+        }
+    }
 }
