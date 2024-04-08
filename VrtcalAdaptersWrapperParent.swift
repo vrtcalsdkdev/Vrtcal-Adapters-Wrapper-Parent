@@ -17,8 +17,7 @@ public class VrtcalAdaptersWrapperParent {
     /// List of adapters included via cocoapods and fetched using ProtocolImplementationFinder
     public let adapterWrappers: [AdapterWrapperProtocol]
 
-    // TODO: Make Vrtcal be its own Adapter Wrapper
-    /// List of available SDKs -  forcibly includes Vrtcal.
+    /// List of available SDKs
     public lazy var sdks: [SDK] = {
         var sdks = adapterWrappers.map {
             $0.sdk
