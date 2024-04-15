@@ -1,41 +1,62 @@
 public enum AdTechConfigProvider: CaseIterable {
     
+    // MARK: Vrtcal Solo
     case vrtcalSoloBanner
     case vrtcalSoloInterstitial
     case vrtcalToAdMobBanner
     case vrtcalToAdMobInterstitial
-    case vrtcalToAppLovinBanner
-    case vrtcalToAppLovinInterstitial
+
+    // MARK: Vrtcal to AppLovin
+    case vrtcalToAppLovinBannerVita
+    case vrtcalToAppLovinInterstitialVita
+    case vrtcalToAppLovinBannerTwitMore
+    case vrtcalToAppLovinInterstitialTwitMore
+    
+    // MARK: Vrtcal to Fyber FairBid
     // Note: vrtcalToFyberFairBidBanner is missing because their banners attach to the window
     case vrtcalToFyberFairBidInterstitial
+    
+    // MARK: Vrtcal to Fyber Marketplace
     case vrtcalToFyberMarketplaceBanner
     case vrtcalToFyberMarketplaceInterstitial
+    
+    // MARK: Vrtcal to IronSource
     // Note: vrtcalToIronSourceBanner is missing because their banners attach to the window
     case vrtcalToIronSourceInterstitial
+    
+    // MARK: Vrtcal to Smaato
     case vrtcalToSmaatoBanner
     case vrtcalToSmaatoInterstitial
+    
+    // MARK: Vrtcal to TapJoy
     case vrtcalToTapjoyInterstitial
+    
+    // MARK: Vrtcal to Vungle
     case vrtcalToVungleBanner
     case vrtcalToVungleInterstitial
 
-    
+    // MARK: AdMob to Vrtcal
     // At the time of this writing, adMob, Applovin and IronSource are the only VrtAsSecondary adapters
     case adMobToVrtcalBanner
     case adMobToVrtcalInterstitial
     
+    // MARK: AppLovin to Vrtcal
     case appLovinToVrtcalBannerVita
     case appLovinToVrtcalInterstitialVita
     case appLovinToVrtcalBannerTwitMore
     case appLovinToVrtcalInterstitialTwitMore
     case appLovinDebugView
 
+    // MARK: IronSource to Vrtcal
     case ironSourceToVrtcalInterstitial
     case ironSourceToVrtcalRewardedVideo
     
+    // MARK: Smaato Solo
     // Smaato does not support mediation with them as primary
     case smaatoSoloBanner
     case smaatoSoloInterstitial
     
+    // MARK: TapJoy Solo
     // TapJoy does not support mediation with them as primary
     case tapjoySoloInterstitial
 
@@ -111,8 +132,9 @@ public enum AdTechConfigProvider: CaseIterable {
                 adUnitId: "10232"
             )
 
-        case .vrtcalToAppLovinBanner:
+        case .vrtcalToAppLovinBannerTwitMore:
             return AdTechConfig(
+                appRestriction: .twitMore,
                 primarySdk: .vrtcal,
                 secondarySdk: .appLovin,
                 placementType: .banner,
@@ -120,13 +142,34 @@ public enum AdTechConfigProvider: CaseIterable {
                 secondaryAdUnitId: "e57095ed15a96c51"
             )
         
-        case .vrtcalToAppLovinInterstitial:
+        case .vrtcalToAppLovinInterstitialTwitMore:
             return AdTechConfig(
+                appRestriction: .twitMore,
                 primarySdk: .vrtcal,
                 secondarySdk: .appLovin,
                 placementType: .interstitial,
                 adUnitId: "10407",
                 secondaryAdUnitId: "e61b109e4aaca615"
+            )
+
+        case .vrtcalToAppLovinBannerVita:
+            return AdTechConfig(
+                appRestriction: .vita,
+                primarySdk: .vrtcal,
+                secondarySdk: .appLovin,
+                placementType: .banner,
+                adUnitId: "600",
+                secondaryAdUnitId: "beebcd33121f3165"
+            )
+        
+        case .vrtcalToAppLovinInterstitialVita:
+            return AdTechConfig(
+                appRestriction: .vita,
+                primarySdk: .vrtcal,
+                secondarySdk: .appLovin,
+                placementType: .interstitial,
+                adUnitId: "601",
+                secondaryAdUnitId: "3f3863cbf96a7b69"
             )
         
         case .vrtcalToFyberFairBidInterstitial:
