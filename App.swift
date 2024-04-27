@@ -12,7 +12,7 @@ public enum App: String {
     case vita
     case twitMore
     
-    static var current: App {
+    public static var current: App {
         switch Bundle.main.bundleIdentifier {
             case "com.vrtcal.VrtcalSDKInternalTestApp":
                 return .vita
