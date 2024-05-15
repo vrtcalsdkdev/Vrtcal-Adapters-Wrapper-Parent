@@ -36,14 +36,8 @@ public class VrtcalAdaptersWrapperParent {
         self.appLogger = appLogger
         self.sdkEventsLogger = sdkEventsLogger
         
-        let protocolImplementationFinder = ProtocolImplementationFinder()
-        
-        adapterWrappers = protocolImplementationFinder.allClasses.compactMap {
-            guard let adapterWrapperType = $0.self as? AdapterWrapperProtocol.Type else {
-                return nil
-            }
-            
-            return adapterWrapperType.init(
+        adapterWrappers = ProtocolImplementationFinder.adapterWrapperTypes().map {
+            return $0.init(
                 appLogger: appLogger,
                 sdkEventsLogger: sdkEventsLogger,
                 delegate: delegate
