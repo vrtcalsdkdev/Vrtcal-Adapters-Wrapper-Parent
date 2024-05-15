@@ -36,7 +36,29 @@ public class VrtcalAdaptersWrapperParent {
         self.appLogger = appLogger
         self.sdkEventsLogger = sdkEventsLogger
         
+        // Print Adapter versions from Podfile.lock
+        if let path = Bundle.main.path(forResource: "Podfile.lock", ofType: nil),
+        let contents = try? String(contentsOfFile: path) {
+            
+            let filtered = contents.split(separator: "\n")
+                .filter {
+                    $0.contains("- Vrtcal-") && 
+                    $0.contains("-Adapters") &&
+                    $0.contains(":") &&
+                    !$0.contains("Wrapper")
+                }
+                .joined(separator: "\n")
+            
+            
+            appLogger.log("Adapters: \n\(filtered)")
+        } else {
+            appLogger.log("Could not get Podfile.lock")
+        }
+        
+        // Initialize Adapter Wrappers
         adapterWrappers = ProtocolImplementationFinder.adapterWrapperTypes().map {
+            appLogger.log("Initializing wrapper \($0)")
+
             return $0.init(
                 appLogger: appLogger,
                 sdkEventsLogger: sdkEventsLogger,
