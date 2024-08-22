@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
     s.source_files = "**/*.swift"
 
     s.platform = :ios
-    s.ios.deployment_target  = '11.0'
+    s.ios.deployment_target  = '12.0'
 
     s.static_framework = true
     s.pod_target_xcconfig = {
